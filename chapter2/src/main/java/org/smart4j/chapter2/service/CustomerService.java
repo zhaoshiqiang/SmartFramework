@@ -24,8 +24,8 @@ public class CustomerService {
     //获取客户列表
     public List<Customer> getCustomerList(String keyword){
         Connection conn = null;
+        List<Customer> customerList = new ArrayList<Customer>();
         try {
-            List<Customer> customerList = new ArrayList<Customer>();
             String sql = "select * from customer";
             conn = DatabaseHelper.getConnection();
             PreparedStatement stmt = conn.prepareStatement(sql);
@@ -47,7 +47,7 @@ public class CustomerService {
         }finally {
             DatabaseHelper.closeConnection(conn);
         }
-        return null;
+        return customerList;
     }
     //获取客户
     public Customer getCustomer(Long id){
