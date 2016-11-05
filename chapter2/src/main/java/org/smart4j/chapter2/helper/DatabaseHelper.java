@@ -2,6 +2,7 @@ package org.smart4j.chapter2.helper;
 
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.BeanListHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.smart4j.chapter2.util.PropsUtil;
@@ -10,6 +11,7 @@ import java.security.PublicKey;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Properties;
 
 /**
@@ -18,11 +20,13 @@ import java.util.Properties;
 public class DatabaseHelper {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(DatabaseHelper.class);
+    private static final QueryRunner QUERY_RUNNER = new QueryRunner();
 
     private static final String DRIVER;
     private static final String URL;
     private static final String USERNAME;
     private static final String PASSWORD;
+
 //    private static final ThreadLocal<Connection> CONNECTION_HOLDER;
 //
 //    private static final QueryRunner QUERY_RUNNER;
@@ -77,5 +81,20 @@ public class DatabaseHelper {
                 LOGGER.error("close connection failure",e);
             }
         }
+    }
+
+    public static <T> List<T> queryEntityList(Class<T> entityClass,Connection conn,String sql, Object... params){
+        List<T> entityList;
+        try {
+            //DbUtils提供的QueryRunner对象可以面向实体(Entity)进行查询，实际上，DbUtils首先执行SQL语句
+            //并返回一个ResultSet，随后通过反射去创建并初始化实体想
+            entityList = QUERY_RUNNER.query(conn,sql,new BeanListHandler<T>(entityClass),params);
+        }catch (SQLException e){
+            LOGGER.error("query entity list failure",e);
+            throw new RuntimeException(e);
+        }finally {
+            closeConnection(conn);
+        }
+        return entityList;
     }
 }

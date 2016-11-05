@@ -15,10 +15,13 @@ import java.util.Map;
  */
 public class CustomerServiceTest {
 
-    private final CustomerService customerService;
+    private final CustomerService customerService = new CustomerService();
 
-    public CustomerServiceTest(CustomerService customerService) {
-        this.customerService = customerService;
+//    public CustomerServiceTest(CustomerService customerService) {
+//        this.customerService = customerService;
+//    }
+
+    public CustomerServiceTest() {
     }
 
     @Before
