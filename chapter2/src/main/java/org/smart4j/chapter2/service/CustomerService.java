@@ -53,29 +53,45 @@ public class CustomerService {
         * 使用DbUtils类库后不需要再面对PreparedStatement和ResultSet了，只需要使用DatabaseHelper就能执行数据库操作。
         * 接下来就是让Connection对开发人员完全透明，也就是说，如何隐藏掉创建与关闭Connection代码？
         * */
-        Connection conn = DatabaseHelper.getConnection();
-        try {
-            String sql = "select * from customer";
-            return DatabaseHelper.queryEntityList(Customer.class,conn,sql,null);
-        }finally {
-            DatabaseHelper.closeConnection(conn);
-        }
+//        Connection conn = DatabaseHelper.getConnection();
+//        try {
+//            String sql = "select * from customer";
+//            return DatabaseHelper.queryEntityList(Customer.class,conn,sql,null);
+//        }finally {
+//            DatabaseHelper.closeConnection(conn);
+//        }
+
+        String sql = "select * from customer";
+        return DatabaseHelper.queryEntityList(Customer.class,sql,null);
+
     }
-    //获取客户
-    public Customer getCustomer(Long id){
-        return null;
+    /**
+     * 获取客户
+     */
+    public Customer getCustomer(long id) {
+        String sql = "SELECT * FROM customer WHERE id = ?";
+        return DatabaseHelper.queryEntity(Customer.class, sql, id);
     }
-    //创建客户
-    public boolean createCustomer(Map<String,Object> fieldMap){
-        return false;
+
+    /**
+     * 创建客户
+     */
+    public boolean createCustomer(Map<String, Object> fieldMap) {
+        return DatabaseHelper.insertEntity(Customer.class, fieldMap);
     }
-    //更新客户
-    public boolean updateCustomer(long id,Map<String,Object> fieldMap){
-        return false;
+
+    /**
+     * 更新客户
+     */
+    public boolean updateCustomer(long id, Map<String, Object> fieldMap) {
+        return DatabaseHelper.updateEntity(Customer.class, id, fieldMap);
     }
-    //删除客户
-    public boolean deleteCustomer(long id){
-        return false;
+
+    /**
+     * 删除客户
+     */
+    public boolean deleteCustomer(long id) {
+        return DatabaseHelper.deleteEntity(Customer.class, id);
     }
 
 }
