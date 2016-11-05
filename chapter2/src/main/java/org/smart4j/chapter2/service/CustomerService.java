@@ -22,45 +22,7 @@ public class CustomerService {
     private static final Logger LOGGER = LoggerFactory.getLogger(CustomerService.class);
 
     //获取客户列表
-    public List<Customer> getCustomerList(String keyword){
-//        Connection conn = null;
-//        List<Customer> customerList = new ArrayList<Customer>();
-//        try {
-//            String sql = "select * from customer";
-//            conn = DatabaseHelper.getConnection();
-//            PreparedStatement stmt = conn.prepareStatement(sql);
-//            ResultSet rs = stmt.executeQuery();
-//            while (rs.next()){
-//                Customer customer = new Customer();
-//                customer.setId(rs.getLong("id"));
-//                customer.setName(rs.getString("name"));
-//                customer.setContact(rs.getString("contact"));
-//                customer.setTelephone(rs.getString("telephone"));
-//                customer.setEmail(rs.getString("email"));
-//                customer.setEmail(rs.getString("email"));
-//                customer.setRemark(rs.getString("remark"));
-//                customerList.add(customer);
-//            }
-//            return customerList;
-//        }catch (SQLException e){
-//            LOGGER.error("execute sql failure",e);
-//        }finally {
-//            DatabaseHelper.closeConnection(conn);
-//        }
-//        return customerList;
-
-        /*
-        * 使用DbUtils类库后不需要再面对PreparedStatement和ResultSet了，只需要使用DatabaseHelper就能执行数据库操作。
-        * 接下来就是让Connection对开发人员完全透明，也就是说，如何隐藏掉创建与关闭Connection代码？
-        * */
-//        Connection conn = DatabaseHelper.getConnection();
-//        try {
-//            String sql = "select * from customer";
-//            return DatabaseHelper.queryEntityList(Customer.class,conn,sql,null);
-//        }finally {
-//            DatabaseHelper.closeConnection(conn);
-//        }
-
+    public List<Customer> getCustomerList(){
         String sql = "select * from customer";
         return DatabaseHelper.queryEntityList(Customer.class,sql,null);
 

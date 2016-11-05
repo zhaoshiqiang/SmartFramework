@@ -25,7 +25,7 @@ public class PropsUtil {
             props = new Properties();
             props.load(is);
         }catch (IOException e){
-            LOGGER.error("load properties file failuser",e);
+            LOGGER.error("load properties file failure",e);
         }finally {
             if (is != null){
                 try {
