@@ -3,7 +3,7 @@ package org.smart4j.chapter2.util;
 /**
  * Created by zhaoshiqiang on 2016/11/4.
  */
-public class CastUtil {
+public final class CastUtil {
 
     public static String castString(Object obj){
         return CastUtil.castString(obj,"");

@@ -3,7 +3,7 @@ package org.smart4j.chapter2.util;
 /**
  * Created by zhaoshiqiang on 2016/11/4.
  */
-public class StringUtil {
+public final class StringUtil {
 
     public static boolean isEmpty(String str){
         if (str != null){
