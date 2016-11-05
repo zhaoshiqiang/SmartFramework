@@ -92,8 +92,6 @@ public class DatabaseHelper {
         }catch (SQLException e){
             LOGGER.error("query entity list failure",e);
             throw new RuntimeException(e);
-        }finally {
-            closeConnection(conn);
         }
         return entityList;
     }
