@@ -15,7 +15,7 @@ import java.util.Set;
  * 控制器助手类
  * Created by zhaoshiqiang on 2016/11/6.
  */
-public class controllerHelper {
+public final class ControllerHelper {
 
     //存放请求与处理器的映射关系(简称 action map)
     private static final Map<Request,Handler> ACTION_MAP = new HashMap<Request, Handler>();
