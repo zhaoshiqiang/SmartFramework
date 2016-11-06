@@ -39,7 +39,7 @@ public class DispatcherServlet extends HttpServlet {
     public void init(ServletConfig servletConfig) throws ServletException {
         //初始化相关Helper类
         HelperLoader.init();
-        //获取ServletContext对象（用于注册servlet）
+        //获取ServletContext对象（用于注册servlet），ServletContext是被所有用户共享的
         ServletContext servletContext = servletConfig.getServletContext();
         //注册处理jsp的servlet
         ServletRegistration jspServlet = servletContext.getServletRegistration("jsp");
@@ -47,6 +47,7 @@ public class DispatcherServlet extends HttpServlet {
         //注册处理静态资源的默认servlet
         ServletRegistration defaultServlet = servletContext.getServletRegistration("default");
         defaultServlet.addMapping(ConfigHelper.getAppAssetPath() + "*");
+        System.out.println("init running---------------------------------");
     }
 
     /**
