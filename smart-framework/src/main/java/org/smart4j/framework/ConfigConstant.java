@@ -1,7 +1,7 @@
 package org.smart4j.framework;
 
 /**
- * �ṩ�������
+ * 维护配置文件中相关的配置项名称
  * Created by zhaoshiqiang on 2016/11/5.
  */
 public interface ConfigConstant {
@@ -11,10 +11,10 @@ public interface ConfigConstant {
     String JDBC_URL = "smart.framework.jdbc.url";
     String JDBC_USERNAME = "smart.framework.jdbc.username";
     String JDBC_PASSWORD = "smart.framework.jdbc.password";
-    //��ʾ��Ŀ�Ļ�������
+    //项目的基础包名
     String APP_BASE_PACKAGE = "smart.framework.app.base_package";
-    //��ʾjsp�Ļ���·��
+    //jsp的基础路径
     String APP_JSP_PATH = "smart.framework.app.jsp_path";
-    //��ʾ��̬��Դ�ļ��Ļ���·��������JS��CSS��ͼƬ��
+    //静态资源文件的基础路径
     String APP_ASSET_PATH = "smart.framework.app.asset_path";
 }
