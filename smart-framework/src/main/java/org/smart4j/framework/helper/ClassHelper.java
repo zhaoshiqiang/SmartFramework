@@ -8,7 +8,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * 类操作助手类
+ * 类操作助手类，获取基础包名所对应的所有类，service类，controller类，框架所管理的bean
  * Created by zhaoshiqiang on 2016/11/5.
  */
 public final class ClassHelper {
