@@ -48,12 +48,11 @@ public final class ConfigHelper {
 
     /**
      * 获取应用 JSP 路径
-     * 在jsppath和assetpath提供默认值，这样在配置文件中这两项就成了可选项
      */
-    public static String getAppJspPath(){
+    public static String getAppJspPath() {
+        //为jsppath和assetpath提供默认值，这样在配置文件中这两项就成了可选项
         return PropsUtil.getString(CONFIG_PROPS, ConfigConstant.APP_JSP_PATH, "/WEB-INF/view/");
     }
-
 
     /**
      * 获取应用静态资源路径
