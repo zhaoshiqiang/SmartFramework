@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 代理链
  * Created by zhaoshiqiang on 2016/11/23.
  */
 public class ProxyChain {

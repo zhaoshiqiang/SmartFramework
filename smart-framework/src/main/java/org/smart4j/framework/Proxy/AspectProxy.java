@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import java.lang.reflect.Method;
 
 /**
+ * 切面代理
  * Created by zhaoshiqiang on 2016/11/23.
  */
 public abstract class AspectProxy implements Proxy{

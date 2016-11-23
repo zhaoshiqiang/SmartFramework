@@ -8,6 +8,7 @@ import java.lang.reflect.Method;
 import java.util.List;
 
 /**
+ * 代理管理器
  * 提供一个创建代理对象的方法，输入一个目标类和一组Proxy接口实现，输出一个代理对象
  * Created by zhaoshiqiang on 2016/11/23.
  */
