@@ -5,7 +5,9 @@ import org.slf4j.LoggerFactory;
 import org.smart4j.framework.Proxy.AspectProxy;
 import org.smart4j.framework.Proxy.Proxy;
 import org.smart4j.framework.Proxy.ProxyManager;
+import org.smart4j.framework.Proxy.TransactionProxy;
 import org.smart4j.framework.annotation.Aspect;
+import org.smart4j.framework.annotation.Service;
 
 import java.lang.annotation.Annotation;
 import java.util.*;
@@ -51,6 +53,11 @@ public final class AopHelper {
      */
     private static Map<Class<?>,Set<Class<?>>> createProxyMap() throws Exception{
         Map<Class<?>,Set<Class<?>>> proxyMap = new HashMap<Class<?>, Set<Class<?>>>();
+        addAspectProxy(proxyMap);
+        return proxyMap;
+    }
+    //用于添加普通切面代理
+    private static void addAspectProxy(Map<Class<?>, Set<Class<?>>> proxyMap) throws Exception{
         //获取抽象类AspectProxy的所有之类
         Set<Class<?>> proxyClassSet = ClassHelper.getClassSetBySuper(AspectProxy.class);
         for (Class<?> proxyClass : proxyClassSet){
@@ -61,7 +68,11 @@ public final class AopHelper {
                 proxyMap.put(proxyClass,targetClassSet);
             }
         }
-        return proxyMap;
+    }
+    //用于添加事务代理，事务都是在带有service的注解中，在TransactionProxy中判断service方法是否需要事务控制
+    private static void addTransactionProxy(Map<Class<?>, Set<Class<?>>> proxyMap){
+        Set<Class<?>> serviceClassSet = ClassHelper.getClassSetByAnnotation(Service.class);
+        proxyMap.put(TransactionProxy.class,serviceClassSet);
     }
     //根据代理类与目标类集合之间的映射关系，得出目标类与代理对象列表之间的映射关系
     private static Map<Class<?>,List<Proxy>> createTargetMap(Map<Class<?>,Set<Class<?>>> proxyMap) throws Exception{
