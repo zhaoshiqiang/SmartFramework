@@ -17,4 +17,6 @@ public interface ConfigConstant {
     String APP_JSP_PATH = "smart.framework.app.jsp_path";
     //静态资源文件的基础路径
     String APP_ASSET_PATH = "smart.framework.app.asset_path";
+    //文件上传大小限制，可在smart.properties文件中使用smart.framework.app.upload_limit配置项来设定上传文件的最大限制
+    String APP_UPLOAD_LIMIT = "smart.framework.app.upload_limit";
 }
