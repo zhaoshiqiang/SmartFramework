@@ -1,6 +1,5 @@
 package org.smart4j.framework.Proxy;
 
-import net.sf.cglib.proxy.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
