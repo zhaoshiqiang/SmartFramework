@@ -22,6 +22,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * 文件上传助手类
  * Created by zhaoshiqiang on 2016/11/25.
  */
 public final class UploadHelper {

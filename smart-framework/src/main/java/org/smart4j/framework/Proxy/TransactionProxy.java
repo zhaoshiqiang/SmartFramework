@@ -14,7 +14,7 @@ import java.lang.reflect.Method;
 public class TransactionProxy implements Proxy {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(TransactionProxy.class);
-    //本地线程变量，它是一个标志，可以保证同意线程中食物控制相关逻辑只会执行一次
+    //本地线程变量，它是一个标志，可以保证同意线程中事务控制相关逻辑只会执行一次
     private static final ThreadLocal<Boolean> FLAG_HOLDER = new ThreadLocal<Boolean>(){
         @Override
         protected Boolean initialValue() {
